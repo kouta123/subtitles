@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>  
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='materialize/css/materialize.min.css') }}"  media="screen,projection"/>
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='index.css') }}"  media="screen,projection"/>
+        <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="utf-8" />
+  <title>HTML 5 complete</title>
+<style>
+  article, aside, dialog, figure, footer, header,
+  hgroup, menu, nav, section { display: block; }
+</style>
+</head>
+<body bgcolor="#c62828">
+  <nav>
+    <div class="nav-wrapper black">
+      <a href="#" class="brand-logo">シンゴジラ風字幕自動生成</a>
+    </div>
+  </nav>
+
+      <form method="post" action="/send" enctype="multipart/form-data" id="file-name">
+        <div class="file-field input-field">
+          <div class="btn black-text  grey lighten-5">
+            <span>File</span>
+            <input type="file" id="img_file" name="img_file">
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text" id="file-input">
+          </div>
+        </div>
+      </form>
+      {% if forbidden %}
+      <p>
+        禁止されたファイルです
+      </p>
+      {% endif %}
+      {% if url %}
+      <div class="row valign-wrapper black">
+          <div class="col s2">
+              
+          </div>
+          <div class="col s8 center">
+            <img src="{{url}}" class="responsive-img"/>
+          </div>
+          <div class="col s2">
+             
+          </div>
+      </div>
+      {% endif %}
+      <script type="text/javascript" src="{{ url_for('static',filename='materialize/js/materialize.min.js') }}"></script>
+      <script type="text/javascript" src="{{ url_for('static',filename='index.js') }}"></script>
+</body>
+</html>
