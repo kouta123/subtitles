@@ -11,8 +11,7 @@ from PIL import Image
 
 class Subtitle:
     def __init__(self):
-        self.vgg16 = models.vgg16(pretrained=False)
-        self.vgg16.load_state_dict(torch.load("./vgg16-397923af.pth"))
+        self.vgg16 = models.vgg16(pretrained=True)
         self.vgg16.eval()
         self.labels = json.load(open('imagenet_class_index.json', 'r', encoding="utf-8"))
         normalize = transforms.Normalize(

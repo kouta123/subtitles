@@ -17,17 +17,17 @@ class Picture:
         return data
 
 
-    def writeDescription(self,imgFile):
-        text = self.watson.predictImage(imgFile)
-        imgFile = Image.open(imgFile)
-        imgFile = imgFile.point(lambda x: x*0.8)
-        width,height = imgFile.size
-        draw = ImageDraw.Draw(imgFile)
+    def writeDescription(self,img_file):
+        text = self.watson.predictImage(img_file)
+        img_file = Image.open(img_file)
+        img_file = img_file.point(lambda x: x*0.8)
+        width,height = img_file.size
+        draw = ImageDraw.Draw(img_file)
         text += " " + self.position[random.randrange(len(self.position))]
-        textLen = len(text)
+        text_len = len(text)
         size = height / 10
-        if textLen * size > width:
-            size = width / textLen
+        if text_len * size > width:
+            size = width / text_len
         font = ImageFont.truetype(self.fontPath, int(size))
-        draw.text((width / 2 - textLen/2 * int(size), height -int(size) - 5), text, fill=(255, 255, 255), font=font)
-        return imgFile
+        draw.text((width / 2 - text_len/2 * int(size), height -int(size) - 5), text, fill=(255, 255, 255), font=font)
+        return img_file
